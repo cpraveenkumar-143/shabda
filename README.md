@@ -254,7 +254,7 @@ export const LANGUAGES = [
 
 Shabda does not collect, store, or transmit any personal data. All lesson progress, XP, and streak data is stored locally on your device using AsyncStorage. No account creation is required.
 
-[Privacy Policy]([https://yourusername.github.io/shabda-privacy](https://cpraveenkumar-143.github.io/shabda/privacy)
+[Privacy Policy]([https://cpraveenkumar-143.github.io/shabda/privacy](https://cpraveenkumar-143.github.io/shabda/privacy)
 
 ---
 
