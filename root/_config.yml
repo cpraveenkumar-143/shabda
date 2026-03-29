@@ -1,1 +1,30 @@
+theme: minima
+title: Shabda — Privacy Policy
+description: Privacy Policy for the Shabda language learning app
+```
 
+Then rename `PRIVACY.md` to `privacy.md` (lowercase) — your URL becomes:
+```
+https://cpraveenkumar-143.github.io/shabda/privacy
+```
+
+With the Jekyll theme applied it will render as a clean styled webpage that looks professional to Apple reviewers.
+
+---
+
+**Step 5 — Verify it works**
+
+Before pasting into App Store Connect, open the URL in your browser and confirm:
+- The page loads without a 404
+- The content is readable
+- It clearly states the app name "Shabda" and that no data is collected
+
+---
+
+**Quick checklist:**
+```
+✅ PRIVACY.md already exists in your repo
+✅ Enable GitHub Pages in repo Settings
+⏳ Wait 2–3 mins for it to go live
+✅ Copy URL → paste into App Store Connect
+✅ Copy URL → paste into Google Play Console
