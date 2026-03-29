@@ -11,6 +11,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Platform-iOS%20%7C%20Android-blue?style=flat-square" />
+  <img src="https://img.shields.io/badge/Built%20with-Expo-000020?style=flat-square&logo=expo" />
   <img src="https://img.shields.io/badge/React%20Native-0.73-61DAFB?style=flat-square&logo=react" />
   <img src="https://img.shields.io/badge/Languages-7-F5C842?style=flat-square" />
   <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" />
@@ -20,7 +21,7 @@
 
 ## What is Shabda?
 
-**Shabda** (శబ్దం · சப்தம் · शब्द) means *word* or *sound* in Sanskrit — and that is exactly what this app is about. Shabda is a Duolingo-style mobile language learning app for seven Asian languages, built with React Native.
+**Shabda** (శబ్దం · சப்தம் · शब्द) means *word* or *sound* in Sanskrit — and that is exactly what this app is about. Shabda is a Duolingo-style mobile language learning app for seven Asian languages, built with React Native and Expo.
 
 Learn scripts, vocabulary, grammar, and culture through bite-sized gamified lessons, XP rewards, streak tracking, and boss challenge quizzes.
 
@@ -65,16 +66,17 @@ Learn scripts, vocabulary, grammar, and culture through bite-sized gamified less
 
 | Layer | Technology |
 |---|---|
-| Framework | React Native |
+| Framework | React Native + Expo SDK |
 | Navigation | React Navigation v6 |
 | State | React Context + AsyncStorage |
-| Audio / TTS | React Native Speech |
+| Audio / TTS | Expo Speech |
 | Data | Local JS data files (no backend) |
-| Build | Native build toolchain |
+| Build | EAS Build (Expo Application Services) |
 
 ---
 
 ## Project Structure
+
 ```
 shabda/
 ├── assets/
@@ -100,7 +102,8 @@ shabda/
 │   │   └── LeaderboardScreen.js
 │   ├── components/
 │   └── context/
-├── app.json                   # App config
+├── app.json                   # Expo config
+├── eas.json                   # EAS build profiles
 └── package.json
 ```
 
@@ -112,29 +115,54 @@ shabda/
 
 - Node.js 18+
 - npm or yarn
-- Xcode (for iOS builds, Mac only)
-- Android Studio (for Android builds)
+- Expo CLI: `npm install -g expo-cli`
+- Expo Go app on your phone (for quick testing)
 
 ### Installation
+
 ```bash
 # Clone the repository
-git clone https://github.com/cpraveenkumar-143/shabda.git
+git clone https://github.com/yourusername/shabda.git
 cd shabda
 
 # Install dependencies
 npm install
 
 # Start the development server
-npm start
+npx expo start
 ```
 
-### Running on Device
-```bash
-# iOS (Mac only)
-npm run ios
+Scan the QR code with **Expo Go** (Android) or the **Camera app** (iOS) to run on your device instantly.
 
-# Android
-npm run android
+### Running on Simulators
+
+```bash
+# iOS Simulator (Mac only)
+npx expo start --ios
+
+# Android Emulator
+npx expo start --android
+```
+
+---
+
+## Building for Production
+
+Shabda uses [EAS Build](https://docs.expo.dev/build/introduction/) for production builds.
+
+```bash
+# Install EAS CLI
+npm install -g eas-cli
+
+# Login to your Expo account
+eas login
+
+# Build for both platforms
+eas build --platform all --profile production
+
+# Submit to App Store and Play Store
+eas submit --platform ios
+eas submit --platform android
 ```
 
 ---
@@ -142,6 +170,7 @@ npm run android
 ## Data Structure
 
 Each language file exports a single object with this shape:
+
 ```js
 export const JAPANESE = {
   id: 'japanese',
@@ -163,7 +192,7 @@ export const JAPANESE = {
             {
               id: 'l1',
               title: 'Vowels: あいうえお',
-              type: 'intro',
+              type: 'intro',   // intro | listen | quiz | boss | culture | grammar | conversation | pronunciation
               xp: 10,
               content: { characters: [...] }
             }
@@ -184,6 +213,7 @@ All 7 languages follow this identical structure, making it straightforward to ad
 1. Create `src/data/newlanguage.js` following the existing structure
 2. Export your language object: `export const NEWLANGUAGE = { ... }`
 3. Import and add it to `src/data/languages.js`:
+
 ```js
 import { NEWLANGUAGE } from './newlanguage';
 
@@ -213,7 +243,7 @@ export const LANGUAGES = [
 
 ## App Store Links
 
-| Platform | Link |
+| Platform | Status |
 |---|---|
 | 🍎 Apple App Store | Coming soon |
 | 🤖 Google Play Store | Coming soon |
@@ -222,9 +252,9 @@ export const LANGUAGES = [
 
 ## Privacy
 
-Shabda does not collect, store, or transmit any personal data. All lesson progress, XP, and streak data is stored locally on your device. No account creation is required.
+Shabda does not collect, store, or transmit any personal data. All lesson progress, XP, and streak data is stored locally on your device using AsyncStorage. No account creation is required.
 
-[Privacy Policy](https://cpraveenkumar-143.github.io/shabda-privacy)
+[Privacy Policy](https://yourusername.github.io/shabda-privacy)
 
 ---
 
@@ -236,6 +266,7 @@ Contributions are welcome, especially:
 - **More lessons** — extend existing stage content
 - **Bug fixes** — open an issue first to discuss
 - **Translations** — help with UI text localisation
+
 ```bash
 # Fork the repo
 # Create your branch
@@ -263,11 +294,11 @@ git push origin feature/add-vietnamese
 
 ## License
 
-MIT © 2025 cpraveenkumar-143
+MIT © 2025 Your Name
 
 ---
 
 <p align="center">
   Made with love for language learners everywhere<br/>
-  <strong>శ · ப் · द · 語 · 말 · 语 · kata</strong>
+  <strong>శ · ப் · द · 語 · 말 · 語 · kata</strong>
 </p>
